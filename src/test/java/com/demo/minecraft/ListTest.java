@@ -24,7 +24,7 @@ public class ListTest
 
     //~ Static fields/initializers ---------------------------------------------
 
-    private static List<String> USERS = Arrays.asList("joe", "john", "mickey");
+    private static List<String> USERS = Arrays.asList("joe", "john", "mickey", "trisha");
 
     //~ Instance fields --------------------------------------------------------
 
