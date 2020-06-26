@@ -49,7 +49,7 @@ public class ListTest
         assertFalse(m_list.contains("mickey"));
     }
 
-    @Ignore @Test public void failed_test()
+    @Test public void failed_test()
     {
         assertFalse(m_list.contains("invalid_user"));
     }
