@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.junit.Assert.assertFalse;
@@ -43,6 +44,7 @@ public class ListTest
         assertTrue(m_list.contains("katie"));
     }
 
+    @Ignore
     @Test public void pass_test()
     {
         assertFalse(m_list.contains("mickey"));
