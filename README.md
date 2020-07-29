@@ -15,5 +15,3 @@ Application.java
 mvn clean install
 java -jar target/minecraft-ios-1.0-SNAPSHOT.jar
 ```
-
-Test 123
