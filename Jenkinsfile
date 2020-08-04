@@ -1,4 +1,6 @@
-stage('Build') {
+node {
+   def mvnHome  
+   stage('Build') {
       cleanWs()
       git 'https://github.com/sureshmurthy85/minecraft-ios.git'
       mvnHome = tool 'mvn'
