@@ -1,11 +1,9 @@
-node {
-   def mvnHome
-   stage('Build') {
+n stage('Build') {
       cleanWs()
-      git 'https://github.com/sureshmurthy85/minecraft-ios.git'
+      git 'https://github.com/sureshmurthy85/forrester_demo_2020.git'
       mvnHome = tool 'mvn'
       withEnv(["MVN_HOME=$mvnHome"]) {
-          sh '"$MVN_HOME" install'
+          sh '"$MVN_HOME/bin/mvn" install'
       }
    }
    stage('Test') {
@@ -13,10 +11,9 @@ node {
        junit 'target/surefire-reports/*.xml'
    }   
    stage('Publish'){
-        cloudBeesFlowCallRestApi body: '', configuration: 'flow-server', envVarNameForResult: '', httpMethod: 'DELETE', urlPath: '/artifacts/com.demo:helloworld'
-	      cloudBeesFlowPublishArtifact artifactName: 'com.demo:helloworld', artifactVersion: 'release-2.0-SNAPSHOT', configuration: 'flow-server', filePath: 'target/helloworld-1.0-SNAPSHOT.jar', repositoryName: 'default'
+	    cloudBeesFlowPublishArtifact artifactName: 'com.demo:helloworld', artifactVersion: 'master-${BUILD_NUMBER}-SNAPSHOT', configuration: 'flow-server-latest', filePath: 'target/helloworld-1.0-SNAPSHOT.jar', repositoryName: 'default'
    }
-   stage('Results') {
-       cloudBeesFlowRunPipeline addParam: '{"pipeline":{"pipelineName":"Deploy Pipeline","parameters":[]}}', configuration: 'flow-server', pipelineName: 'Test Pipeline', projectName: 'Test'    
+   stage('Run Flow Pipeline'){
+       cloudBeesFlowRunPipeline addParam: '{"pipeline":{"pipelineName":"Test Pipeline","parameters":[]}}', configuration: 'flow-server-latest', pipelineName: 'Test Pipeline', projectName: 'Test'
    }
 }
