@@ -1,4 +1,4 @@
-n stage('Build') {
+stage('Build') {
       cleanWs()
       git 'https://github.com/sureshmurthy85/minecraft-ios.git'
       mvnHome = tool 'mvn'
@@ -11,7 +11,7 @@ n stage('Build') {
        junit 'target/surefire-reports/*.xml'
    }   
    stage('Publish'){
-	    cloudBeesFlowPublishArtifact artifactName: 'com.demo:helloworld', artifactVersion: 'release-2.0-${BUILD_NUMBER}-SNAPSHOT', configuration: 'flow-server-latest', filePath: 'target/minecraft-ios-1.0-SNAPSHOT.jar', repositoryName: 'default'
+	    cloudBeesFlowPublishArtifact artifactName: 'com.demo:minecraft-ios', artifactVersion: 'release-2.0-${BUILD_NUMBER}-SNAPSHOT', configuration: 'flow-server-latest', filePath: 'target/minecraft-ios-1.0-SNAPSHOT.jar', repositoryName: 'default'
    }
    stage('Run Flow Pipeline'){
        cloudBeesFlowRunPipeline addParam: '{"pipeline":{"pipelineName":"Test Pipeline","parameters":[]}}', configuration: 'flow-server-latest', pipelineName: 'Test Pipeline', projectName: 'Test'
