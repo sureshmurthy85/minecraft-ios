@@ -1,4 +1,4 @@
-n stage('Build') {
+stage('Build') {
       cleanWs()
       git 'https://github.com/sureshmurthy85/minecraft-ios.git'
       mvnHome = tool 'mvn'
