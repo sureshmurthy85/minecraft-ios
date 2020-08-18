@@ -1,8 +1,10 @@
 node {
    def mvnHome  
-   parameters {
-        string(name: 'param_text', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
-   }
+   properties([
+   parameters([
+    string(name: 'myParam', defaultValue: '')
+    ])
+   ])
    stage('Build') {
       cleanWs()
       git 'https://github.com/sureshmurthy85/minecraft-ios.git'
