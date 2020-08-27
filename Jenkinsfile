@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('Dev') {
             steps {
-                echo "${params.ABORTED}"
+                currentBuild.result = "${params.ABORTED}"
             }
         }
     }
