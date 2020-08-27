@@ -1,13 +1,11 @@
 node()
-{
-properties([
-   parameters([
-    string(name: 'status', defaultValue: 'SUCCESS')
-    ])
-   ])
+{	
+  parameters {
+        string(name: 'ABORTED', defaultValue: 'SUCCESSS', description: 'Build Status')
+  }	
   stage("Stage1")
   {
       // something went wrong, but it isn't catastrophic...
-	  currentBuild.result = "ABORTED"
+	  currentBuild.result = "${ABORTED}"
   }
 }
