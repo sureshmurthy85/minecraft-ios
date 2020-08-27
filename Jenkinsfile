@@ -5,7 +5,8 @@ node()
   }	
   stage("Stage1")
   {
-      // something went wrong, but it isn't catastrophic...
-	  currentBuild.result = "${params.ABORTED}"
+   echo "=========>" + "${params.ABORTED}"	  
+   // something went wrong, but it isn't catastrophic...
+   currentBuild.result = "${params.ABORTED}"
   }
 }
